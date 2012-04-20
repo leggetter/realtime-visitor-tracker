@@ -30,6 +30,18 @@
         map: map,
         animation: google.maps.Animation.DROP
       });
+      
+      var contentString = '' +
+      '<div class="visitor-info">' +
+        '<strong>Locality:</strong> ' + data.locality + '<br />' +
+        '<strong>Lat/Lng:</strong> ' + data.lat + ', ' + data.lng + '<br />' +
+        '<strong>Page:</strong> <a href="' + data.page + '">' + data.page.replace(/https?:\/\/[^/]*/, '') + '</a><br />' +
+      '</div>';
+
+      var infowindow = new google.maps.InfoWindow({content: contentString});
+      google.maps.event.addListener(styleMaker, 'click', function() {
+        infowindow.open(map, styleMaker);
+      });
     }
 
     var visitorPosition = null;

@@ -5,7 +5,8 @@
   $data = array(
     'lat' => $_POST['lat'],
     'lng' => $_POST['lng'],
-    'locality' => $_POST['locality']
+    'locality' => $_POST['locality'],
+    'page' => $_SERVER['HTTP_REFERER']
   );
   
   $pusher = new Pusher(APP_KEY, APP_SECRET, APP_ID);
