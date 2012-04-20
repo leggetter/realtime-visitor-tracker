@@ -27,7 +27,8 @@
             text:data.locality
           }),
         position: latLng,
-        map: map
+        map: map,
+        animation: google.maps.Animation.DROP
       });
     }
 
