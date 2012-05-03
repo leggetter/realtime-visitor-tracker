@@ -8,12 +8,13 @@
   
     var pusher = new Pusher(APP_KEY);
     pusher.connection.bind('state_change', function(state) {
-      if( state.current === 'connected' ) {
-        navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
-      }
+      // connected
     });
     
     var channel = pusher.subscribe('visitor-hits');
+    channel.bind('pusher:subscription_succeeded', function() {
+      navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+    });
     channel.bind('new_hit', newHitReceived);
 
     function newHitReceived(data) {
